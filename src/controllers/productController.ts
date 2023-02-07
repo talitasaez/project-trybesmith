@@ -1,12 +1,18 @@
+/* eslint-disable import/prefer-default-export */
 import { Request, Response } from 'express';
-import { ProductsService } from '../services/productService';
+import ProductService from '../services/productService';
 
 export default class ProductController {
-  constructor(private productsService = new ProductsService()) {}
+  public productService: ProductService;
+
+  constructor() { 
+    this.productService = new ProductService(); 
+  } 
 
   public registerProduct = async (req: Request, res: Response) => {
-    const product = req.body;
-    const result = await this.productsService.registerProduct(product);
-    return res.status(201).json(result);
+    const { name, amount } = req.body;
+    const result = await this.productService.registerProduct(name, amount);
+    
+    res.status(201).json(result);
   };
 }

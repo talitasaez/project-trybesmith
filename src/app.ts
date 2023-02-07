@@ -1,10 +1,13 @@
 import express from 'express';
-import productsController from './controllers/productController';
-//
+import ProductController from './controllers/productController';
+
+const productController = new ProductController();
 const app = express();
 
 app.use(express.json());
 
-app.post('/products', productsController.registerProducts);
+app.post('/products', (req, res) => {
+  productController.registerProduct(req, res);
+});
 
 export default app;

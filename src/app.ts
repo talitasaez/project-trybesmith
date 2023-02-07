@@ -9,8 +9,8 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/products', productController.registerProduct.bind(productController));
 app.get('/products', productController.findAll);
+app.post('/products', productController.registerProduct);
 
 app.post('/users', userController.registerUser);
 

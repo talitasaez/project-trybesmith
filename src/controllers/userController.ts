@@ -10,7 +10,7 @@ export default class UserController {
 
   public registerUser = async (req: Request, res: Response) => {
     const user = req.body;
-    const result = await this.userService.registerUser(user);
-    res.status(201).json({ result });
+    const token = await this.userService.registerUser(user);
+    res.status(201).json({ token });
   };
 }

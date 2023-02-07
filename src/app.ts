@@ -6,8 +6,8 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/products', (req, res) => {
-  productController.registerProduct(req, res);
-});
+app.post('/products', productController.registerProduct);
+
+app.get('/products', productController.findAll);
 
 export default app;
